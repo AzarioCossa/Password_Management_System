@@ -6,28 +6,22 @@ from ManagerAttacker import *
 
 
 if __name__ == "__main__":
-    file_controller = FileController('mpwd.txt')
     
-    master_password = changeMasterPassword(file_controller)
+    fileController = FileController('mpwd.txt')
+        
+    masterPassword = changeMasterPassword(fileController)
 
-    user_str = input("Veuillez entrer une chaîne de caractères: ")
+    #user_str = input("Veuillez entrer une chaîne de caractères: ")
     #size = validateIntSize(0, 1, 12)
-    size=1
-    
-    password = generatePassword(master_password, user_str, size)
-    print("Mot de passe généré: ", password)
-    
-
-    file_controller = FileController('mpwd.txt')
-    
-    master_password = getMasterPassword(file_controller)
 
     real_passwords = {
-        "Unilim": generatePassword(master_password, "Unilim", 1),
-        "Amazon": generatePassword(master_password, "Amazon", 1),
-        "Netflix": generatePassword(master_password, "Netflix", 1)
+        "Unilim": generatePassword(masterPassword, "Unilim", 1),
+        "Amazon": generatePassword(masterPassword, "Amazon", 1),
+        "Netflix": generatePassword(masterPassword, "Netflix", 1)
     }
     
-    print("Tentando encontrar o mot de passe maître via ataque de dicionário...")
-    bruteForceAttack(real_passwords, 10)
+    print("Tentatives de trouver le mot de passe maitre via attaque par dictionnaire.")
+    for i in range(1, 4):
+        print("Collisions de taille : ", i)
+        bruteForceAttack(real_passwords, i)
     
