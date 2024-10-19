@@ -24,7 +24,7 @@ def generateCombinations(size):
     
     return combinations
 
-def brute_force_attack(real_passwords, size=10):
+def bruteForceAttack(real_passwords, size=10):
     all_combinations = generateCombinations(size)
     attempts = 0
     

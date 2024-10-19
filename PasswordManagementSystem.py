@@ -2,6 +2,7 @@ from FileController import FileController
 from Utils import validateIntSize
 from MasterPasswordManager import *
 from PasswordManager import *
+from ManagerAttacker import *
 
 
 if __name__ == "__main__":
@@ -28,5 +29,5 @@ if __name__ == "__main__":
     }
     
     print("Tentando encontrar o mot de passe maître via ataque de dicionário...")
-    brute_force_attack(real_passwords, 10)
+    bruteForceAttack(real_passwords, 10)
     
