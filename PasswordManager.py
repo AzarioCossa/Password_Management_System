@@ -1,6 +1,7 @@
+import string
 import hashlib
 import random
-import string
+
 
 def generate_password(str1, str2, size):
     passwordChars=[]
@@ -24,10 +25,3 @@ def generate_password(str1, str2, size):
 
     return password
 
-if __name__ == "__main__":
-    
-    size=12
-    text1 = "Texto1"
-    text2 = "Texto2"
-    password = generate_password(text1, text2, size)
-    print(password)
