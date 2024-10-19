@@ -12,16 +12,24 @@ if __name__ == "__main__":
     masterPassword = changeMasterPassword(fileController)
 
     #user_str = input("Veuillez entrer une chaîne de caractères: ")
-    #size = validateIntSize(0, 1, 12)
+    
+    
+    #size = validateIntSize(1, 1, 12)
 
+    size=3
+    
     real_passwords = {
-        "Unilim": generatePassword(masterPassword, "Unilim", 1),
-        "Amazon": generatePassword(masterPassword, "Amazon", 1),
-        "Netflix": generatePassword(masterPassword, "Netflix", 1)
+        "Unilim": generatePassword(masterPassword, "Unilim", size),
+        "Amazon": generatePassword(masterPassword, "Amazon", size),
+        "Netflix": generatePassword(masterPassword, "Netflix", size)
     }
     
+    for tag in real_passwords:
+        print("Mot de passe pour", tag + ":", real_passwords[tag])
+        print("Double verif", tag, "  ", generatePassword(masterPassword, tag, size))
+    
     print("Tentatives de trouver le mot de passe maitre via attaque par dictionnaire.")
-    for i in range(1, 4):
-        print("Collisions de taille : ", i)
-        bruteForceAttack(real_passwords, i)
+    bruteForceAttackForTag(real_passwords, "Unilim", size=3)
+    #bruteForceAttack(real_passwords, 2)
+    
     
