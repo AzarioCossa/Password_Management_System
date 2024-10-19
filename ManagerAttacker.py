@@ -5,7 +5,6 @@ from PasswordManager import *
 
 
 def numberOfCombinations(size):
-    
     for i in range(size-1):
         numberOfCombinations=numberOfCombinations*size
     return numberOfCombinations
@@ -38,22 +37,26 @@ def bruteForceAttack(real_passwords, size):
         return None
     else:
         return collisions
-
-
-
-def bruteForceAttackForTag(real_password, tag, size=10):
-    all_chars = string.ascii_letters + string.digits+string.punctuation
-    attempts = 0
     
-    for candidate in itertools.product(all_chars, repeat=size):
-        candidate_password = ''.join(candidate)
+def bruteForceAttackOnTag(targetPassword, tag, size):
+    all_chars = string.ascii_letters + string.digits + string.punctuation
+    attempts=0
+    candidatePasswords=[]
+    
+    
+    for candidate in generateCombinations(10):
+        candidatePassword = ''.join(candidate)
         attempts += 1
-        
-        candidate_hash = generatePassword(candidate_password, tag, 3)
-        if candidate_hash == real_password:
-            print(f"Mot de passe maître trouvé: {candidate_password}")
-            print(f"Nombre de tentatives: {attempts}")
-            return candidate_password
 
-    print("Aucun mot de passe maître correspondant trouvé.")
-    return None
+        generatedPassword = generatePassword(candidatePassword, tag, size)
+        if generatedPassword == targetPassword:
+            print("Mot de passe maitre trouvé:", candidatePassword)
+            print("Tentative : ", attempts)
+            candidatePasswords.append(candidatePassword)
+        candidatePassword=''
+        
+    if len(candidatePasswords) == 0:
+        print("Aucun mot de passe correspondant trouvé.")
+        return None
+    else :
+        return candidatePasswords
