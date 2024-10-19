@@ -41,7 +41,7 @@ def brute_force_attack(real_passwords, size=10):
             print(f"Nombre d'essaies: {attempts}")
             return candidate
 
-    print("Nenhuma senha mestre correspondente foi encontrada.")
+    print("Pas de mot de passe (collision) trouvée.")
     return None
 
 if __name__ == '__main__':
