@@ -3,7 +3,7 @@ import hashlib
 import random
 
 
-def generate_password(str1, str2, size):
+def generatePassword(str1, str2, size):
     passwordChars=[]
     combined_str = str1 + str2
     
